@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "category": "soviet",
+    "rarity": "common",
+    "points": 10,
+    "mode": "solo",
+    "title": "Панорама с балкона",
+    "task": "Сними вид на город с любого балкона или окна",
+    "art": "bg_soviet_1.svg"
+  },
+  {
+    "id": 2,
+    "category": "soviet",
+    "rarity": "common",
+    "points": 10,
+    "mode": "stranger",
+    "title": "Мозаика на стене",
+    "task": "Попроси прохожего показать любимую мозаику",
+    "art": "bg_soviet_2.svg"
+  },
+  {
+    "id": 3,
+    "category": "soviet",
+    "rarity": "rare",
+    "points": 25,
+    "mode": "friends",
+    "title": "Советский фонтан",
+    "task": "Сфотографируйтесь у фонтана в советском стиле",
+    "art": "bg_soviet_3.svg"
+  },
+  {
+    "id": 4,
+    "category": "soviet",
+    "rarity": "epic",
+    "points": 50,
+    "mode": "call",
+    "title": "Ретро-автобус",
+    "task": "Покажи родным ретро-автобус по видеозвонку",
+    "art": "bg_soviet_4.svg"
+  },
+  {
+    "id": 5,
+    "category": "ritsa",
+    "rarity": "common",
+    "points": 10,
+    "mode": "solo",
+    "title": "Горная тропа",
+    "task": "Сними тропу, по которой идёшь",
+    "art": "bg_ritsa_1.svg"
+  },
+  {
+    "id": 6,
+    "category": "ritsa",
+    "rarity": "common",
+    "points": 10,
+    "mode": "stranger",
+    "title": "Вид на озеро",
+    "task": "Попроси незнакомца сфотографировать тебя на фоне озера",
+    "art": "bg_ritsa_2.svg"
+  },
+  {
+    "id": 7,
+    "category": "ritsa",
+    "rarity": "rare",
+    "points": 25,
+    "mode": "friends",
+    "title": "Водопад",
+    "task": "Групповое фото у водопада",
+    "art": "bg_ritsa_3.svg"
+  },
+  {
+    "id": 8,
+    "category": "ritsa",
+    "rarity": "epic",
+    "points": 50,
+    "mode": "solo",
+    "title": "Облака в горах",
+    "task": "Поймай облака, заходящие на вершину",
+    "art": "bg_ritsa_4.svg"
+  },
+  {
+    "id": 9,
+    "category": "sacred",
+    "rarity": "common",
+    "points": 10,
+    "mode": "solo",
+    "title": "Свеча у стены",
+    "task": "Сними зажжённую свечу в храме",
+    "art": "bg_sacred_1.svg"
+  },
+  {
+    "id": 10,
+    "category": "sacred",
+    "rarity": "common",
+    "points": 10,
+    "mode": "call",
+    "title": "Колокол",
+    "task": "Позвони родным, когда ударит колокол",
+    "art": "bg_sacred_2.svg"
+  },
+  {
+    "id": 11,
+    "category": "sacred",
+    "rarity": "rare",
+    "points": 25,
+    "mode": "friends",
+    "title": "Икона в нише",
+    "task": "Сфотографируйтесь у иконы",
+    "art": "bg_sacred_3.svg"
+  },
+  {
+    "id": 12,
+    "category": "sacred",
+    "rarity": "legendary",
+    "points": 100,
+    "mode": "call",
+    "title": "Великий Питиунт",
+    "task": "Видеозвонок из храма. Один дубль",
+    "art": "bg_sacred_legend.svg"
+  },
+  {
+    "id": 13,
+    "category": "table",
+    "rarity": "common",
+    "points": 10,
+    "mode": "solo",
+    "title": "Чашка чая",
+    "task": "Сними свой чай крупным планом",
+    "art": "bg_table_1.svg"
+  },
+  {
+    "id": 14,
+    "category": "table",
+    "rarity": "common",
+    "points": 10,
+    "mode": "friends",
+    "title": "Стол накрыт",
+    "task": "Общий кадр накрытого стола",
+    "art": "bg_table_2.svg"
+  },
+  {
+    "id": 15,
+    "category": "table",
+    "rarity": "rare",
+    "points": 25,
+    "mode": "stranger",
+    "title": "Рынок",
+    "task": "Попроси продавца сфотографировать тебя с фруктами",
+    "art": "bg_table_3.svg"
+  },
+  {
+    "id": 16,
+    "category": "table",
+    "rarity": "epic",
+    "points": 50,
+    "mode": "call",
+    "title": "Аджика",
+    "task": "Покажи родным, как выглядит настоящая аджика",
+    "art": "bg_table_4.svg"
+  },
+  {
+    "id": 17,
+    "category": "voices",
+    "rarity": "common",
+    "points": 10,
+    "mode": "solo",
+    "title": "Вывеска на языке",
+    "task": "Сними вывеску с абхазскими буквами",
+    "art": "bg_voices_1.svg"
+  },
+  {
+    "id": 18,
+    "category": "voices",
+    "rarity": "common",
+    "points": 10,
+    "mode": "stranger",
+    "title": "Песня на улице",
+    "task": "Попроси местного спеть пару строк для кадра",
+    "art": "bg_voices_2.svg"
+  },
+  {
+    "id": 19,
+    "category": "voices",
+    "rarity": "rare",
+    "points": 25,
+    "mode": "friends",
+    "title": "Хор",
+    "task": "Сфотографируйтесь, напевая песню",
+    "art": "bg_voices_3.svg"
+  },
+  {
+    "id": 20,
+    "category": "voices",
+    "rarity": "legendary",
+    "points": 100,
+    "mode": "friends",
+    "title": "Гимн заката",
+    "task": "Спойте вместе на закате. Один дубль",
+    "art": "bg_voices_legend.svg"
+  },
+  {
+    "id": 21,
+    "category": "sea",
+    "rarity": "common",
+    "points": 10,
+    "mode": "solo",
+    "title": "Волна",
+    "task": "Поймай волну в момент удара о берег",
+    "art": "bg_sea_1.svg"
+  },
+  {
+    "id": 22,
+    "category": "sea",
+    "rarity": "common",
+    "points": 10,
+    "mode": "call",
+    "title": "Морской бриз",
+    "task": "Покажи родным море по видеозвонку",
+    "art": "bg_sea_2.svg"
+  },
+  {
+    "id": 23,
+    "category": "sea",
+    "rarity": "rare",
+    "points": 25,
+    "mode": "stranger",
+    "title": "Пирс",
+    "task": "Попроси незнакомца сфотографировать тебя на пирсе",
+    "art": "bg_sea_3.svg"
+  },
+  {
+    "id": 24,
+    "category": "sea",
+    "rarity": "epic",
+    "points": 50,
+    "mode": "friends",
+    "title": "Закат у воды",
+    "task": "Групповой кадр на закате у моря",
+    "art": "bg_sea_4.svg"
+  },
+  {
+    "id": 25,
+    "category": "ritsa",
+    "rarity": "legendary",
+    "points": 100,
+    "mode": "solo",
+    "title": "Рица на рассвете",
+    "task": "Одно фото озера на рассвете. Без фильтров",
+    "art": "bg_ritsa_legend.svg"
+  },
+  {
+    "id": 26,
+    "category": "sea",
+    "rarity": "legendary",
+    "points": 100,
+    "mode": "call",
+    "title": "Шёпот прибоя",
+    "task": "Видеозвонок с пляжа. Слышен только шум моря",
+    "art": "bg_sea_legend.svg"
+  }
+]

@@ -1,0 +1,40 @@
+:root {
+  --color-bg: #1a0f0a;
+  --color-bg-elevated: #2a1810;
+  --color-surface: #3d2418;
+  --color-text: #f5e6d8;
+  --color-text-muted: #c4a88a;
+  --color-accent: #ff6b2b;
+  --color-accent-hover: #ff8547;
+  --color-border: #5c3d2a;
+
+  --rarity-common: #9ca3af;
+  --rarity-rare: #60a5fa;
+  --rarity-epic: #c084fc;
+  --rarity-legendary: #fbbf24;
+
+  --mode-stranger: #f472b6;
+  --mode-call: #34d399;
+  --mode-friends: #fb923c;
+  --mode-solo: #94a3b8;
+
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-card: 12px;
+
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(255, 107, 43, 0.3);
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --header-height: 56px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
