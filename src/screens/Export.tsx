@@ -41,7 +41,7 @@ export function Export() {
         <Link to="/" className="page-header__back">
           ← Назад
         </Link>
-        <h1 className="title-md page-header__title">Поделиться</h1>
+        <h1 className="title-md page-header__title">Экспорт фото</h1>
       </header>
 
       <p className="text-body" style={{ marginBottom: 24 }}>
@@ -51,7 +51,7 @@ export function Export() {
       {claimed.length > 0 ? (
         <>
           <button type="button" className="btn btn--primary btn--full" onClick={() => void shareAll()}>
-            Поделиться всеми
+            Отправить все фото
           </button>
 
           <div className="export-list" style={{ marginTop: 24 }}>

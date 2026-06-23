@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useGameState } from '@/hooks/useGameState';
 import { ProgressBar } from '@/components/ProgressBar';
 import { WinOverlay } from '@/components/WinOverlay';
+import { PwaInstallPrompt } from '@/components/PwaInstallPrompt';
 import { CATEGORY_LABELS } from '@/engine/constants';
 import { WIN_SCORE } from '@/engine/constants';
 
@@ -47,18 +48,16 @@ export function Home() {
         Тянуть карту
       </button>
 
+      <PwaInstallPrompt />
+
       <nav className="nav-links">
         <Link to="/collection" className="btn btn--secondary">
           Коллекция
         </Link>
         <Link to="/export" className="btn btn--secondary">
-          Поделиться
+          Экспорт фото
         </Link>
       </nav>
-
-      <p className="pwa-hint">
-        Установи на экран: «Поделиться» → «На экран Домой». Работает офлайн.
-      </p>
 
       {hasWon && !winDismissed && (
         <WinOverlay
