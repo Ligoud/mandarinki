@@ -64,7 +64,10 @@ export function Collection() {
             tabIndex={0}
           >
             {card.claimed && card.photo ? (
-              <img className="collection-item__thumb" src={card.photo} alt={card.title} />
+              <>
+                <img className="collection-item__thumb" src={card.photo} alt={card.title} />
+                <span className="collection-item__title">{card.title}</span>
+              </>
             ) : (
               <div className="collection-item__placeholder">
                 <img src={`/art/${card.art}`} alt="" style={{ width: '60%', opacity: 0.3 }} />

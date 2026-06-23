@@ -41,11 +41,14 @@ export function computeCenterCrop(
   };
 }
 
+export type CameraFacing = 'environment' | 'user';
+
 export async function startCamera(
   video: HTMLVideoElement,
+  facing: CameraFacing = 'environment',
 ): Promise<MediaStream> {
   const stream = await navigator.mediaDevices.getUserMedia({
-    video: { facingMode: { ideal: 'environment' } },
+    video: { facingMode: { ideal: facing } },
     audio: false,
   });
   video.srcObject = stream;
@@ -70,14 +73,42 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
+function drawFrameLabel(ctx: CanvasRenderingContext2D, title: string): void {
+  const fontSize = Math.round((11 / 400) * OUTPUT_HEIGHT * 1.15);
+  const y = (385 / 400) * OUTPUT_HEIGHT;
+  const maxWidth = OUTPUT_WIDTH * 0.88;
+
+  ctx.font = `600 ${fontSize}px Georgia, 'Times New Roman', serif`;
+  ctx.fillStyle = 'rgba(245, 230, 216, 0.92)';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  let text = title;
+  if (ctx.measureText(text).width > maxWidth) {
+    while (text.length > 1 && ctx.measureText(`${text}…`).width > maxWidth) {
+      text = text.slice(0, -1);
+    }
+    text = `${text}…`;
+  }
+
+  ctx.fillText(text, OUTPUT_WIDTH / 2, y);
+}
+
 function drawCardComposite(
   ctx: CanvasRenderingContext2D,
   source: CanvasImageSource,
   frame: HTMLImageElement,
   sourceWidth: number,
   sourceHeight: number,
+  title: string,
+  mirror = false,
 ): void {
   const crop = computeCenterCrop(sourceWidth, sourceHeight);
+  ctx.save();
+  if (mirror) {
+    ctx.translate(OUTPUT_WIDTH, 0);
+    ctx.scale(-1, 1);
+  }
   ctx.drawImage(
     source,
     crop.sx,
@@ -89,12 +120,16 @@ function drawCardComposite(
     OUTPUT_WIDTH,
     OUTPUT_HEIGHT,
   );
+  ctx.restore();
   ctx.drawImage(frame, 0, 0, OUTPUT_WIDTH, OUTPUT_HEIGHT);
+  drawFrameLabel(ctx, title);
 }
 
 export async function compositePhoto(
   video: HTMLVideoElement,
   frameSrc: string,
+  title: string,
+  mirror = false,
 ): Promise<string> {
   const frame = await loadImage(frameSrc);
   const w = video.videoWidth;
@@ -107,7 +142,7 @@ export async function compositePhoto(
   const ctx = canvas.getContext('2d');
   if (!ctx) throw new Error('Canvas not supported');
 
-  drawCardComposite(ctx, video, frame, w, h);
+  drawCardComposite(ctx, video, frame, w, h, title, mirror);
 
   return canvas.toDataURL('image/jpeg', JPEG_QUALITY);
 }
@@ -115,6 +150,7 @@ export async function compositePhoto(
 export async function compositeFromFile(
   file: File,
   frameSrc: string,
+  title: string,
 ): Promise<string> {
   const frame = await loadImage(frameSrc);
   const bitmap = await createImageBitmap(file);
@@ -125,7 +161,7 @@ export async function compositeFromFile(
   const ctx = canvas.getContext('2d');
   if (!ctx) throw new Error('Canvas not supported');
 
-  drawCardComposite(ctx, bitmap, frame, bitmap.width, bitmap.height);
+  drawCardComposite(ctx, bitmap, frame, bitmap.width, bitmap.height, title);
   bitmap.close();
 
   return canvas.toDataURL('image/jpeg', JPEG_QUALITY);

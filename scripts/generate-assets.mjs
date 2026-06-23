@@ -20,7 +20,7 @@ const CATEGORY_COLORS = {
   sea: '#34d399',
 };
 
-function frameSvg(name, color, legendary = false) {
+function frameSvg(color, legendary = false) {
   const stroke = legendary ? '#fbbf24' : color;
   const sw = legendary ? 6 : 4;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
@@ -30,7 +30,6 @@ function frameSvg(name, color, legendary = false) {
   <rect x="276" y="50" width="24" height="300" fill="rgba(26,15,10,0.55)"/>
   <rect x="${sw}" y="${sw}" width="${300 - sw * 2}" height="${400 - sw * 2}" fill="none" stroke="${stroke}" stroke-width="${sw}"/>
   ${legendary ? '<circle cx="150" cy="25" r="8" fill="#fbbf24"/>' : ''}
-  <text x="150" y="385" text-anchor="middle" fill="${stroke}" font-family="Georgia,serif" font-size="11" opacity="0.8">${name}</text>
 </svg>`;
 }
 
@@ -45,7 +44,7 @@ const arts = [
 
 for (const [file, cat, legendary] of arts) {
   const color = CATEGORY_COLORS[cat];
-  writeFileSync(join(artDir, file), frameSvg(file.replace('.svg', ''), color, !!legendary));
+  writeFileSync(join(artDir, file), frameSvg(color, !!legendary));
 }
 
 function createPngSync(size) {

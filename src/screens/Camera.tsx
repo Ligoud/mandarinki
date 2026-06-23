@@ -6,6 +6,7 @@ import {
   stopCamera,
   compositePhoto,
   compositeFromFile,
+  type CameraFacing,
 } from '@/camera/capture';
 
 export function Camera() {
@@ -18,9 +19,11 @@ export function Camera() {
 
   const [error, setError] = useState<string | null>(null);
   const [capturing, setCapturing] = useState(false);
+  const [facing, setFacing] = useState<CameraFacing>('environment');
 
   const cardId = Number(id);
   const card = getCard(cardId);
+  const isFrontCamera = facing === 'user';
 
   useEffect(() => {
     if (!card) {
@@ -36,8 +39,12 @@ export function Camera() {
     let cancelled = false;
 
     async function init() {
+      stopCamera(streamRef.current);
+      streamRef.current = null;
+      setError(null);
+
       try {
-        const stream = await startCamera(video!);
+        const stream = await startCamera(video!, facing);
         if (cancelled) {
           stopCamera(stream);
           return;
@@ -57,7 +64,7 @@ export function Camera() {
       stopCamera(streamRef.current);
       streamRef.current = null;
     };
-  }, [card]);
+  }, [card, facing]);
 
   if (!card) {
     return null;
@@ -65,12 +72,16 @@ export function Camera() {
 
   const frameSrc = `/art/${card.art}`;
 
+  function toggleFacing() {
+    setFacing((prev) => (prev === 'environment' ? 'user' : 'environment'));
+  }
+
   async function handleCapture() {
     const video = videoRef.current;
-    if (!video || capturing) return;
+    if (!video || capturing || !card) return;
     setCapturing(true);
     try {
-      const photo = await compositePhoto(video, frameSrc);
+      const photo = await compositePhoto(video, frameSrc, card.title, isFrontCamera);
       await claimCard(cardId, photo);
       navigate('/collection');
     } catch {
@@ -82,10 +93,10 @@ export function Camera() {
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
-    if (!file) return;
+    if (!file || !card) return;
     setCapturing(true);
     try {
-      const photo = await compositeFromFile(file, frameSrc);
+      const photo = await compositeFromFile(file, frameSrc, card.title);
       await claimCard(cardId, photo);
       navigate('/collection');
     } catch {
@@ -119,21 +130,38 @@ export function Camera() {
       ) : (
         <div className="camera-view__preview">
           <div className="camera-view__stage">
-            <video ref={videoRef} className="camera-view__video" playsInline muted />
+            <video
+              ref={videoRef}
+              className={`camera-view__video ${isFrontCamera ? 'camera-view__video--mirror' : ''}`}
+              playsInline
+              muted
+            />
             <img className="camera-view__frame" src={frameSrc} alt="" />
+            <div className="camera-view__title">{card.title}</div>
           </div>
         </div>
       )}
 
       <div className="camera-view__controls">
         {!error && (
-          <button
-            type="button"
-            className="camera-view__capture"
-            onClick={() => void handleCapture()}
-            disabled={capturing}
-            aria-label="Снять"
-          />
+          <>
+            <button
+              type="button"
+              className="btn btn--secondary camera-view__flip"
+              onClick={toggleFacing}
+              disabled={capturing}
+              aria-label="Переключить камеру"
+            >
+              ⟲
+            </button>
+            <button
+              type="button"
+              className="camera-view__capture"
+              onClick={() => void handleCapture()}
+              disabled={capturing}
+              aria-label="Снять"
+            />
+          </>
         )}
         <button
           type="button"
@@ -149,7 +177,6 @@ export function Camera() {
         ref={fileRef}
         type="file"
         accept="image/*"
-        capture="environment"
         hidden
         onChange={(e) => void handleFileChange(e)}
       />
