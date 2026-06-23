@@ -118,8 +118,10 @@ export function Camera() {
         </div>
       ) : (
         <div className="camera-view__preview">
-          <video ref={videoRef} className="camera-view__video" playsInline muted />
-          <img className="camera-view__frame" src={frameSrc} alt="" />
+          <div className="camera-view__stage">
+            <video ref={videoRef} className="camera-view__video" playsInline muted />
+            <img className="camera-view__frame" src={frameSrc} alt="" />
+          </div>
         </div>
       )}
 

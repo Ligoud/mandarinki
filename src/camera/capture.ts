@@ -1,5 +1,46 @@
 const JPEG_QUALITY = 0.85;
 
+/** Card frame aspect ratio — matches SVG viewBox and collection cells */
+export const CARD_ASPECT = 3 / 4;
+export const OUTPUT_WIDTH = 900;
+export const OUTPUT_HEIGHT = 1200;
+
+export interface CropRect {
+  sx: number;
+  sy: number;
+  sWidth: number;
+  sHeight: number;
+}
+
+/** Center-crop source to target aspect ratio (same as object-fit: cover in a 3:4 box). */
+export function computeCenterCrop(
+  sourceWidth: number,
+  sourceHeight: number,
+  targetAspect: number = CARD_ASPECT,
+): CropRect {
+  const sourceAspect = sourceWidth / sourceHeight;
+
+  if (sourceAspect > targetAspect) {
+    const sHeight = sourceHeight;
+    const sWidth = sourceHeight * targetAspect;
+    return {
+      sx: (sourceWidth - sWidth) / 2,
+      sy: 0,
+      sWidth,
+      sHeight,
+    };
+  }
+
+  const sWidth = sourceWidth;
+  const sHeight = sourceWidth / targetAspect;
+  return {
+    sx: 0,
+    sy: (sourceHeight - sHeight) / 2,
+    sWidth,
+    sHeight,
+  };
+}
+
 export async function startCamera(
   video: HTMLVideoElement,
 ): Promise<MediaStream> {
@@ -29,6 +70,28 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
+function drawCardComposite(
+  ctx: CanvasRenderingContext2D,
+  source: CanvasImageSource,
+  frame: HTMLImageElement,
+  sourceWidth: number,
+  sourceHeight: number,
+): void {
+  const crop = computeCenterCrop(sourceWidth, sourceHeight);
+  ctx.drawImage(
+    source,
+    crop.sx,
+    crop.sy,
+    crop.sWidth,
+    crop.sHeight,
+    0,
+    0,
+    OUTPUT_WIDTH,
+    OUTPUT_HEIGHT,
+  );
+  ctx.drawImage(frame, 0, 0, OUTPUT_WIDTH, OUTPUT_HEIGHT);
+}
+
 export async function compositePhoto(
   video: HTMLVideoElement,
   frameSrc: string,
@@ -39,13 +102,12 @@ export async function compositePhoto(
   if (!w || !h) throw new Error('Video not ready');
 
   const canvas = document.createElement('canvas');
-  canvas.width = w;
-  canvas.height = h;
+  canvas.width = OUTPUT_WIDTH;
+  canvas.height = OUTPUT_HEIGHT;
   const ctx = canvas.getContext('2d');
   if (!ctx) throw new Error('Canvas not supported');
 
-  ctx.drawImage(video, 0, 0, w, h);
-  ctx.drawImage(frame, 0, 0, w, h);
+  drawCardComposite(ctx, video, frame, w, h);
 
   return canvas.toDataURL('image/jpeg', JPEG_QUALITY);
 }
@@ -58,13 +120,12 @@ export async function compositeFromFile(
   const bitmap = await createImageBitmap(file);
 
   const canvas = document.createElement('canvas');
-  canvas.width = bitmap.width;
-  canvas.height = bitmap.height;
+  canvas.width = OUTPUT_WIDTH;
+  canvas.height = OUTPUT_HEIGHT;
   const ctx = canvas.getContext('2d');
   if (!ctx) throw new Error('Canvas not supported');
 
-  ctx.drawImage(bitmap, 0, 0);
-  ctx.drawImage(frame, 0, 0, bitmap.width, bitmap.height);
+  drawCardComposite(ctx, bitmap, frame, bitmap.width, bitmap.height);
   bitmap.close();
 
   return canvas.toDataURL('image/jpeg', JPEG_QUALITY);
