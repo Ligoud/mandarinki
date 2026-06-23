@@ -82,7 +82,6 @@ export function Collection() {
             <button
               type="button"
               className="btn btn--secondary btn--full"
-              style={{ marginTop: 16 }}
               onClick={() => setViewer(null)}
             >
               Закрыть
