@@ -70,7 +70,7 @@ export function Camera() {
     return null;
   }
 
-  const frameSrc = `/art/${card.art}`;
+  const frameSrc = '/art/camera-frame.svg';
 
   function toggleFacing() {
     setFacing((prev) => (prev === 'environment' ? 'user' : 'environment'));

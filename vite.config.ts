@@ -8,13 +8,13 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['art/**/*', 'icons/**/*'],
+      includeAssets: ['art/**/*', 'icons/**/*', 'brand/**/*'],
       manifest: {
         name: 'Мандаринка',
         short_name: 'Мандаринка',
         description: 'Карточная фото-игра для поездки',
-        theme_color: '#1a0f0a',
-        background_color: '#1a0f0a',
+        theme_color: '#f4ecdd',
+        background_color: '#f4ecdd',
         display: 'standalone',
         orientation: 'portrait',
         icons: [

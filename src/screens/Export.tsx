@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useGameState } from '@/hooks/useGameState';
 import { dataUrlToBlob } from '@/camera/capture';
+import { downloadPhoto } from '@/utils/sharePhoto';
 
 export function Export() {
   const { gameCards, score } = useGameState();
@@ -11,7 +12,7 @@ export function Export() {
 
     const files = claimed.map((card) => {
       const blob = dataUrlToBlob(card.photo!);
-      return new File([blob], `mandarinki-${card.id}.jpg`, { type: 'image/jpeg' });
+      return new File([blob], `mandarinka-${card.slug}.jpg`, { type: 'image/jpeg' });
     });
 
     if (navigator.canShare?.({ files })) {
@@ -24,15 +25,8 @@ export function Export() {
     }
 
     for (const card of claimed) {
-      downloadPhoto(card.photo!, `mandarinki-${card.id}.jpg`);
+      downloadPhoto(card.photo!, `mandarinka-${card.slug}.jpg`);
     }
-  }
-
-  function downloadPhoto(dataUrl: string, filename: string) {
-    const link = document.createElement('a');
-    link.href = dataUrl;
-    link.download = filename;
-    link.click();
   }
 
   return (
@@ -65,7 +59,7 @@ export function Export() {
                 <button
                   type="button"
                   className="btn btn--secondary"
-                  onClick={() => downloadPhoto(card.photo!, `mandarinki-${card.id}.jpg`)}
+                  onClick={() => downloadPhoto(card.photo!, `mandarinka-${card.slug}.jpg`)}
                 >
                   ↓
                 </button>

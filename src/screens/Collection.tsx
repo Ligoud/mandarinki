@@ -2,16 +2,27 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGameState } from '@/hooks/useGameState';
 import { CATEGORY_LABELS } from '@/engine/constants';
-import type { Category } from '@/engine/types';
+import type { Category, GameCard } from '@/engine/types';
+import { sharePhoto } from '@/utils/sharePhoto';
+
+function shareCardPhoto(card: GameCard) {
+  if (!card.photo) return;
+  return sharePhoto(card.photo, `mandarinka-${card.slug}.jpg`, {
+    title: card.title,
+    text: card.title,
+  });
+}
 
 export function Collection() {
   const navigate = useNavigate();
   const { gameCards } = useGameState();
   const [filter, setFilter] = useState<Category | 'all'>('all');
-  const [viewer, setViewer] = useState<string | null>(null);
+  const [viewerId, setViewerId] = useState<number | null>(null);
 
   const filtered =
     filter === 'all' ? gameCards : gameCards.filter((c) => c.category === filter);
+
+  const viewerCard = viewerId != null ? gameCards.find((c) => c.id === viewerId) : null;
 
   return (
     <div className="page">
@@ -46,17 +57,17 @@ export function Collection() {
         {filtered.map((card) => (
           <div
             key={card.id}
-            className={`collection-item ${card.claimed ? 'collection-item--claimed' : ''}`}
+            className={`collection-item collection-item--${card.rarity} ${card.claimed ? 'collection-item--claimed' : ''}`}
             onClick={() => {
               if (card.claimed && card.photo) {
-                setViewer(card.photo);
+                setViewerId(card.id);
               } else if (!card.claimed) {
                 navigate(`/camera/${card.id}`);
               }
             }}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-                if (card.claimed && card.photo) setViewer(card.photo);
+                if (card.claimed && card.photo) setViewerId(card.id);
                 else if (!card.claimed) navigate(`/camera/${card.id}`);
               }
             }}
@@ -70,7 +81,11 @@ export function Collection() {
               </>
             ) : (
               <div className="collection-item__placeholder">
-                <img src={`/art/${card.art}`} alt="" style={{ width: '60%', opacity: 0.3 }} />
+                <img
+                  className="collection-item__placeholder-art"
+                  src={`/art/${card.art}`}
+                  alt=""
+                />
                 <span className="collection-item__label">{card.title}</span>
               </div>
             )}
@@ -78,17 +93,26 @@ export function Collection() {
         ))}
       </div>
 
-      {viewer && (
-        <div className="overlay" onClick={() => setViewer(null)}>
+      {viewerCard?.photo && (
+        <div className="overlay" onClick={() => setViewerId(null)}>
           <div className="photo-viewer" onClick={(e) => e.stopPropagation()}>
-            <img src={viewer} alt="Фото карты" />
-            <button
-              type="button"
-              className="btn btn--secondary btn--full"
-              onClick={() => setViewer(null)}
-            >
-              Закрыть
-            </button>
+            <img src={viewerCard.photo} alt={viewerCard.title} />
+            <div className="photo-viewer__actions">
+              <button
+                type="button"
+                className="btn btn--primary btn--full"
+                onClick={() => void shareCardPhoto(viewerCard)}
+              >
+                Поделиться
+              </button>
+              <button
+                type="button"
+                className="btn btn--secondary btn--full"
+                onClick={() => setViewerId(null)}
+              >
+                Закрыть
+              </button>
+            </div>
           </div>
         </div>
       )}

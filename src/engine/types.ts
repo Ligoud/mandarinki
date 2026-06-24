@@ -2,20 +2,16 @@ export type Rarity = 'common' | 'rare' | 'epic' | 'legendary';
 
 export type Mode = 'stranger' | 'call' | 'friends' | 'solo';
 
-export type Category =
-  | 'soviet'
-  | 'ritsa'
-  | 'sacred'
-  | 'table'
-  | 'voices'
-  | 'sea';
+export type Category = 'retro' | 'mount' | 'holy' | 'food' | 'talk' | 'sea';
 
 export interface CardDefinition {
   id: number;
+  slug: string;
   category: Category;
   rarity: Rarity;
   points: number;
   mode: Mode;
+  oneTake: boolean;
   title: string;
   task: string;
   art: string;

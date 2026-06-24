@@ -1,0 +1,430 @@
+{
+  "name": "Мандаринка",
+  "edition": "Абхазия · 7 дней",
+  "assets_version": "v1-svg",
+  "note": "SVG используют currentColor — цвет задаётся через CSS (color/fill). Замени art позже на 3D-картинки.",
+  "palette": {
+    "paper": "#F4ECDD",
+    "ink": "#23314B",
+    "terra": "#CE6B4A",
+    "saffron": "#E0A24B",
+    "teal": "#2F7E7E",
+    "sage": "#5E8A78",
+    "gold": "#B5853C",
+    "blue": "#3E6FA3",
+    "tang": "#ED7A33"
+  },
+  "categories": {
+    "retro": {
+      "ru": "Советский мираж",
+      "icon": "icons/cat-retro.svg"
+    },
+    "mount": {
+      "ru": "Рица и горы",
+      "icon": "icons/cat-mount.svg"
+    },
+    "holy": {
+      "ru": "Святые камни",
+      "icon": "icons/cat-holy.svg"
+    },
+    "food": {
+      "ru": "Абхазский стол",
+      "icon": "icons/cat-food.svg"
+    },
+    "talk": {
+      "ru": "Голоса и буквы",
+      "icon": "icons/cat-talk.svg"
+    },
+    "sea": {
+      "ru": "Море и ритм",
+      "icon": "icons/cat-sea.svg"
+    }
+  },
+  "rarities": {
+    "common": {
+      "ru": "Бытовая",
+      "points": 10,
+      "color": "#5E8A78",
+      "icon": "icons/rarity-common.svg"
+    },
+    "rare": {
+      "ru": "Редкая",
+      "points": 25,
+      "color": "#3E6FA3",
+      "icon": "icons/rarity-rare.svg"
+    },
+    "epic": {
+      "ru": "Эпик",
+      "points": 50,
+      "color": "#CE6B4A",
+      "icon": "icons/rarity-epic.svg"
+    },
+    "legendary": {
+      "ru": "Легендарная",
+      "points": 100,
+      "color": "#B5853C",
+      "icon": "icons/rarity-legendary.svg"
+    }
+  },
+  "modes": {
+    "stranger": {
+      "ru": "с незнакомцем",
+      "icon": "icons/mode-stranger.svg"
+    },
+    "call": {
+      "ru": "созвон с роднёй",
+      "icon": "icons/mode-call.svg"
+    },
+    "friends": {
+      "ru": "с подругами",
+      "icon": "icons/mode-friends.svg"
+    },
+    "solo": {
+      "ru": "соло",
+      "icon": "icons/mode-solo.svg"
+    }
+  },
+  "brand": {
+    "mark": "brand/mark.svg",
+    "logo": "brand/logo.svg",
+    "pattern": "brand/pattern.svg"
+  },
+  "cards": [
+    {
+      "id": 1,
+      "slug": "gagra-colonnade",
+      "category": "retro",
+      "rarity": "common",
+      "points": 10,
+      "mode": "stranger",
+      "title": "Колоннада Гагры",
+      "task": "Прохожий снимает тебя под аркой",
+      "art": "art/01-gagra-colonnade.svg"
+    },
+    {
+      "id": 2,
+      "slug": "winter-theater",
+      "category": "retro",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "friends",
+      "title": "Зимний театр",
+      "task": "Кадр в пустом зале с попутчицей",
+      "art": "art/02-winter-theater.svg"
+    },
+    {
+      "id": 3,
+      "slug": "psyrtskha-platform",
+      "category": "retro",
+      "rarity": "epic",
+      "points": 50,
+      "mode": "solo",
+      "title": "Платформа Psyrtskha",
+      "task": "Павильон над водой без людей",
+      "art": "art/03-psyrtskha-platform.svg"
+    },
+    {
+      "id": 4,
+      "slug": "soviet-mosaic",
+      "category": "retro",
+      "rarity": "common",
+      "points": 10,
+      "mode": "stranger",
+      "title": "Советская мозаика",
+      "task": "Местный показывает любимую",
+      "art": "art/04-soviet-mosaic.svg"
+    },
+    {
+      "id": 5,
+      "slug": "retro-sanatorium",
+      "category": "retro",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "call",
+      "title": "Ретро-санаторий",
+      "task": "Покажи сыну коридор времени",
+      "art": "art/05-retro-sanatorium.svg"
+    },
+    {
+      "id": 6,
+      "slug": "blue-lake",
+      "category": "mount",
+      "rarity": "common",
+      "points": 10,
+      "mode": "stranger",
+      "title": "Голубое озеро",
+      "task": "Незнакомец и ты у воды",
+      "art": "art/06-blue-lake.svg"
+    },
+    {
+      "id": 7,
+      "slug": "yupshara-canyon",
+      "category": "mount",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "solo",
+      "title": "Юпшарский каньон",
+      "task": "Стены «Каменного мешка»",
+      "art": "art/07-yupshara-canyon.svg"
+    },
+    {
+      "id": 8,
+      "slug": "ritsa-overlook",
+      "category": "mount",
+      "rarity": "legendary",
+      "points": 100,
+      "mode": "friends",
+      "title": "Озеро Рица сверху",
+      "task": "Панорама с компанией",
+      "art": "art/08-ritsa-overlook.svg"
+    },
+    {
+      "id": 9,
+      "slug": "waterfall-ribbon",
+      "category": "mount",
+      "rarity": "common",
+      "points": 10,
+      "mode": "stranger",
+      "title": "Лента у водопада",
+      "task": "Повяжите ленту вместе",
+      "art": "art/09-waterfall-ribbon.svg"
+    },
+    {
+      "id": 10,
+      "slug": "mamzyshkha-viewpoint",
+      "category": "mount",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "call",
+      "title": "Смотровая Мамзышха",
+      "task": "Покажи горизонт родным",
+      "art": "art/10-mamzyshkha-viewpoint.svg"
+    },
+    {
+      "id": 11,
+      "slug": "new-athos-monastery",
+      "category": "holy",
+      "rarity": "common",
+      "points": 10,
+      "mode": "solo",
+      "title": "Новоафонский монастырь",
+      "task": "Купола в кипарисах",
+      "art": "art/11-new-athos-monastery.svg"
+    },
+    {
+      "id": 12,
+      "slug": "new-athos-cave",
+      "category": "holy",
+      "rarity": "epic",
+      "points": 50,
+      "mode": "stranger",
+      "title": "Новоафонская пещера",
+      "task": "Кадр у подземного озера",
+      "art": "art/12-new-athos-cave.svg"
+    },
+    {
+      "id": 13,
+      "slug": "anakopia-fortress",
+      "category": "holy",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "friends",
+      "title": "Анакопийская крепость",
+      "task": "Доберитесь компанией до руин",
+      "art": "art/13-anakopia-fortress.svg"
+    },
+    {
+      "id": 14,
+      "slug": "pitiunt",
+      "category": "holy",
+      "rarity": "legendary",
+      "points": 100,
+      "mode": "call",
+      "title": "Великий Питиунт",
+      "task": "Видеозвонок из храма. Один дубль",
+      "art": "art/14-pitiunt.svg"
+    },
+    {
+      "id": 15,
+      "slug": "temple-candle",
+      "category": "holy",
+      "rarity": "common",
+      "points": 10,
+      "mode": "stranger",
+      "title": "Свеча в храме",
+      "task": "Прихожанка расскажет про место",
+      "art": "art/15-temple-candle.svg"
+    },
+    {
+      "id": 16,
+      "slug": "khachapuri-boat",
+      "category": "food",
+      "rarity": "common",
+      "points": 10,
+      "mode": "stranger",
+      "title": "Хачапур-лодочка",
+      "task": "Сними того, кто готовил",
+      "art": "art/16-khachapuri-boat.svg"
+    },
+    {
+      "id": 17,
+      "slug": "churchkhela",
+      "category": "food",
+      "rarity": "common",
+      "points": 10,
+      "mode": "friends",
+      "title": "Чурчхела",
+      "task": "Угости подругу в кадре",
+      "art": "art/17-churchkhela.svg"
+    },
+    {
+      "id": 18,
+      "slug": "mamaliga",
+      "category": "food",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "stranger",
+      "title": "Мамалыга (abysta)",
+      "task": "Поймай реакцию на аджику",
+      "art": "art/18-mamaliga.svg"
+    },
+    {
+      "id": 19,
+      "slug": "local-wine",
+      "category": "food",
+      "rarity": "epic",
+      "points": 50,
+      "mode": "friends",
+      "title": "Местное вино",
+      "task": "Чокнитесь в кадре",
+      "art": "art/19-local-wine.svg"
+    },
+    {
+      "id": 20,
+      "slug": "honey",
+      "category": "food",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "stranger",
+      "title": "Мёд с пасеки",
+      "task": "Пчеловод с банкой в кадре",
+      "art": "art/20-honey.svg"
+    },
+    {
+      "id": 21,
+      "slug": "mandarins",
+      "category": "food",
+      "rarity": "common",
+      "points": 10,
+      "mode": "call",
+      "title": "Мандарины",
+      "task": "Покажи ящик сыну по видео",
+      "art": "art/21-mandarins.svg"
+    },
+    {
+      "id": 22,
+      "slug": "abkhaz-sign",
+      "category": "talk",
+      "rarity": "common",
+      "points": 10,
+      "mode": "stranger",
+      "title": "Вывеска на абхазском",
+      "task": "Местный читает вслух",
+      "art": "art/22-abkhaz-sign.svg"
+    },
+    {
+      "id": 23,
+      "slug": "order-in-local",
+      "category": "talk",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "stranger",
+      "title": "«Закажи на местном»",
+      "task": "Скажи фразу, сними реакцию",
+      "art": "art/23-order-in-local.svg"
+    },
+    {
+      "id": 24,
+      "slug": "postcard-home",
+      "category": "talk",
+      "rarity": "common",
+      "points": 10,
+      "mode": "call",
+      "title": "Открытка домой",
+      "task": "Выбери открытку с родными",
+      "art": "art/24-postcard-home.svg"
+    },
+    {
+      "id": 25,
+      "slug": "old-poster",
+      "category": "talk",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "friends",
+      "title": "Старая афиша",
+      "task": "Найдите винтаж, общий кадр",
+      "art": "art/25-old-poster.svg"
+    },
+    {
+      "id": 26,
+      "slug": "sea-swing",
+      "category": "sea",
+      "rarity": "common",
+      "points": 10,
+      "mode": "stranger",
+      "title": "Качели над морем",
+      "task": "Незнакомец качает — ты ловишь",
+      "art": "art/26-sea-swing.svg"
+    },
+    {
+      "id": 27,
+      "slug": "sunset-call",
+      "category": "sea",
+      "rarity": "common",
+      "points": 10,
+      "mode": "call",
+      "title": "Закат для родных",
+      "task": "Видеозвонок на закате",
+      "art": "art/27-sunset-call.svg"
+    },
+    {
+      "id": 28,
+      "slug": "pier-silhouettes",
+      "category": "sea",
+      "rarity": "rare",
+      "points": 25,
+      "mode": "friends",
+      "title": "Пирс на закате",
+      "task": "Силуэты компании",
+      "art": "art/28-pier-silhouettes.svg"
+    },
+    {
+      "id": 29,
+      "slug": "turka-coffee",
+      "category": "sea",
+      "rarity": "epic",
+      "points": 50,
+      "mode": "stranger",
+      "title": "Кофе из турки",
+      "task": "Раздели кофе с тем, кто варит",
+      "art": "art/29-turka-coffee.svg"
+    },
+    {
+      "id": 30,
+      "slug": "group-finale",
+      "category": "sea",
+      "rarity": "legendary",
+      "points": 100,
+      "mode": "friends",
+      "title": "Главный кадр недели",
+      "task": "Все встреченные — в одном кадре",
+      "art": "art/30-group-finale.svg"
+    }
+  ],
+  "set_bonus": 50,
+  "win": {
+    "points": 800,
+    "sets": 4,
+    "legendaries": 3
+  }
+}

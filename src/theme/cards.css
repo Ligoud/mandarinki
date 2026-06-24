@@ -24,11 +24,63 @@
   box-shadow: var(--shadow-glow), var(--shadow-card);
 }
 
+.card-frame__illustration {
+  padding: var(--space-md);
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-frame--common .card-frame__illustration {
+  color: var(--rarity-common);
+}
+
+.card-frame--rare .card-frame__illustration {
+  color: var(--rarity-rare);
+}
+
+.card-frame--epic .card-frame__illustration {
+  color: var(--rarity-epic);
+}
+
+.card-frame--legendary .card-frame__illustration {
+  color: var(--rarity-legendary);
+}
+
 .card-frame__art {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
+  aspect-ratio: 10 / 7;
+  object-fit: contain;
   display: block;
+}
+
+.card-frame__photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+.card-frame__onetake {
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.badge-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+
+.rarity-badge,
+.mode-badge,
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
 }
 
 .card-frame__body {
@@ -59,7 +111,6 @@
 }
 
 .rarity-badge {
-  display: inline-block;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   font-size: 0.75rem;
@@ -89,7 +140,6 @@
 }
 
 .mode-badge {
-  display: inline-block;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   font-size: 0.75rem;
@@ -117,7 +167,6 @@
 }
 
 .category-badge {
-  display: inline-block;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   font-size: 0.7rem;
@@ -142,13 +191,22 @@
 }
 
 .collection-item--claimed {
-  border-color: var(--color-accent);
+  border-color: transparent;
+  box-shadow: var(--shadow-card);
 }
 
 .collection-item__thumb {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  display: block;
+}
+
+.collection-item--claimed .collection-item__title {
+  min-height: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .collection-item__title {
@@ -156,14 +214,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: var(--space-xs) var(--space-sm);
-  background: linear-gradient(transparent, rgba(26, 15, 10, 0.85));
-  font-family: var(--font-display);
-  font-size: 0.65rem;
+  padding: var(--space-sm) var(--space-sm);
+  background: rgba(35, 49, 75, 0.92);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-paper);
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .collection-item__placeholder {
@@ -174,9 +232,31 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  opacity: 0.5;
   padding: var(--space-sm);
   text-align: center;
+  background: #fff;
+}
+
+.collection-item__placeholder-art {
+  width: 70%;
+  aspect-ratio: 10 / 7;
+  object-fit: contain;
+}
+
+.collection-item--common .collection-item__placeholder-art {
+  color: var(--rarity-common);
+}
+
+.collection-item--rare .collection-item__placeholder-art {
+  color: var(--rarity-rare);
+}
+
+.collection-item--epic .collection-item__placeholder-art {
+  color: var(--rarity-epic);
+}
+
+.collection-item--legendary .collection-item__placeholder-art {
+  color: var(--rarity-legendary);
 }
 
 .collection-item__label {
@@ -289,6 +369,7 @@
   max-height: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
+  box-shadow: inset 0 0 0 3px var(--color-accent);
 }
 
 .camera-view__video {
@@ -318,14 +399,14 @@
   right: 0;
   bottom: 5.5%;
   padding: 0 var(--space-md);
-  font-family: var(--font-display);
-  font-size: clamp(0.65rem, 2.8vw, 0.85rem);
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 3vw, 0.9rem);
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-paper);
   text-align: center;
   pointer-events: none;
-  opacity: 0.92;
-  line-height: 1.2;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
+  line-height: 1.25;
 }
 
 .camera-view__controls {
@@ -371,6 +452,13 @@
   max-width: 100%;
   margin: 0 auto;
   gap: var(--space-md);
+}
+
+.photo-viewer__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
 }
 
 .photo-viewer img {

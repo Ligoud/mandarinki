@@ -13,12 +13,12 @@ import { checkWin } from './win';
 import { SET_BONUS } from './constants';
 
 const sampleCards: CardDefinition[] = [
-  { id: 1, category: 'soviet', rarity: 'common', points: 10, mode: 'solo', title: 'A', task: 't', art: 'a.svg' },
-  { id: 2, category: 'soviet', rarity: 'rare', points: 25, mode: 'solo', title: 'B', task: 't', art: 'b.svg' },
-  { id: 3, category: 'ritsa', rarity: 'legendary', points: 100, mode: 'call', title: 'C', task: 't', art: 'c.svg' },
-  { id: 4, category: 'ritsa', rarity: 'common', points: 10, mode: 'solo', title: 'D', task: 't', art: 'd.svg' },
-  { id: 5, category: 'sea', rarity: 'legendary', points: 100, mode: 'call', title: 'E', task: 't', art: 'e.svg' },
-  { id: 6, category: 'sea', rarity: 'legendary', points: 100, mode: 'solo', title: 'F', task: 't', art: 'f.svg' },
+  { id: 1, slug: 'a', category: 'retro', rarity: 'common', points: 10, mode: 'solo', oneTake: false, title: 'A', task: 't', art: 'a.svg' },
+  { id: 2, slug: 'b', category: 'retro', rarity: 'rare', points: 25, mode: 'solo', oneTake: false, title: 'B', task: 't', art: 'b.svg' },
+  { id: 3, slug: 'c', category: 'mount', rarity: 'legendary', points: 100, mode: 'call', oneTake: true, title: 'C', task: 't', art: 'c.svg' },
+  { id: 4, slug: 'd', category: 'mount', rarity: 'common', points: 10, mode: 'solo', oneTake: false, title: 'D', task: 't', art: 'd.svg' },
+  { id: 5, slug: 'e', category: 'sea', rarity: 'legendary', points: 100, mode: 'call', oneTake: true, title: 'E', task: 't', art: 'e.svg' },
+  { id: 6, slug: 'f', category: 'sea', rarity: 'legendary', points: 100, mode: 'solo', oneTake: true, title: 'F', task: 't', art: 'f.svg' },
 ];
 
 function claimed(...ids: number[]): ProgressMap {
@@ -58,10 +58,10 @@ describe('getCategoryProgress', () => {
   it('tracks claimed per category', () => {
     const progress = claimed(1);
     const result = getCategoryProgress(sampleCards, progress);
-    const soviet = result.find((r) => r.category === 'soviet');
-    expect(soviet?.claimed).toBe(1);
-    expect(soviet?.total).toBe(2);
-    expect(soviet?.complete).toBe(false);
+    const retro = result.find((r) => r.category === 'retro');
+    expect(retro?.claimed).toBe(1);
+    expect(retro?.total).toBe(2);
+    expect(retro?.complete).toBe(false);
   });
 });
 
@@ -69,10 +69,12 @@ describe('checkWin', () => {
   it('wins by score threshold', () => {
     const cards: CardDefinition[] = Array.from({ length: 20 }, (_, i) => ({
       id: i + 1,
-      category: 'soviet',
+      slug: `card-${i}`,
+      category: 'retro',
       rarity: 'epic',
       points: 50,
       mode: 'solo',
+      oneTake: false,
       title: `Card ${i}`,
       task: 't',
       art: 'a.svg',
@@ -108,6 +110,6 @@ describe('drawRandomCard', () => {
 
 describe('getCompletedCategories', () => {
   it('lists fully claimed categories', () => {
-    expect(getCompletedCategories(sampleCards, claimed(1, 2))).toEqual(['soviet']);
+    expect(getCompletedCategories(sampleCards, claimed(1, 2))).toEqual(['retro']);
   });
 });

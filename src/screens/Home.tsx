@@ -25,7 +25,10 @@ export function Home() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1 className="title-xl page-header__title">Мандаринка</h1>
+        <div>
+          <h1 className="title-xl page-header__title">Мандаринка</h1>
+          <p className="text-xs">Абхазия · 7 дней</p>
+        </div>
       </header>
 
       <div className="score-display">

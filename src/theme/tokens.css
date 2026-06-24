@@ -1,33 +1,38 @@
 :root {
-  --color-bg: #1a0f0a;
-  --color-bg-elevated: #2a1810;
-  --color-surface: #3d2418;
-  --color-text: #f5e6d8;
-  --color-text-muted: #c4a88a;
-  --color-accent: #ff6b2b;
-  --color-accent-hover: #ff8547;
-  --color-border: #5c3d2a;
+  /* Designer palette — mandarinka-content/manifest.json */
+  --color-paper: #f4ecdd;
+  --color-ink: #23314b;
+  --color-bg: #f4ecdd;
+  --color-bg-elevated: #fbf7ee;
+  --color-surface: #efe6d6;
+  --color-text: #23314b;
+  --color-text-muted: rgba(35, 49, 75, 0.62);
+  --color-accent: #ed7a33;
+  --color-accent-hover: #ce6b4a;
+  --color-border: rgba(35, 49, 75, 0.14);
+  --color-terra: #ce6b4a;
+  --color-teal: #2f7e7e;
 
-  --rarity-common: #9ca3af;
-  --rarity-rare: #60a5fa;
-  --rarity-epic: #c084fc;
-  --rarity-legendary: #fbbf24;
+  --rarity-common: #5e8a78;
+  --rarity-rare: #3e6fa3;
+  --rarity-epic: #ce6b4a;
+  --rarity-legendary: #b5853c;
 
-  --mode-stranger: #f472b6;
-  --mode-call: #34d399;
-  --mode-friends: #fb923c;
-  --mode-solo: #94a3b8;
+  --mode-stranger: #ce6b4a;
+  --mode-call: #2f7e7e;
+  --mode-friends: #ed7a33;
+  --mode-solo: #3e6fa3;
 
-  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-display: Georgia, 'Times New Roman', serif;
   --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
-  --radius-card: 12px;
+  --radius-card: 14px;
 
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 20px rgba(255, 107, 43, 0.3);
+  --shadow-card: 0 8px 28px rgba(35, 49, 75, 0.12);
+  --shadow-glow: 0 0 20px rgba(237, 122, 51, 0.25);
 
   --space-xs: 4px;
   --space-sm: 8px;

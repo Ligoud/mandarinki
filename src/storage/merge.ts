@@ -1,6 +1,13 @@
 import type { CardDefinition, CardProgress, ProgressMap } from '@/engine/types';
 import { getAllProgress } from './db';
 
+interface DeckFile {
+  name: string;
+  edition: string;
+  version: string;
+  cards: CardDefinition[];
+}
+
 export function progressListToMap(list: CardProgress[]): ProgressMap {
   const map: ProgressMap = {};
   for (const item of list) {
@@ -25,5 +32,12 @@ export function createEmptyProgress(cardId: number): CardProgress {
 
 export async function loadDeck(): Promise<CardDefinition[]> {
   const module = await import('@/data/deck.json');
-  return module.default as CardDefinition[];
+  const deck = module.default as DeckFile;
+  return deck.cards;
+}
+
+export async function loadDeckMeta(): Promise<Pick<DeckFile, 'name' | 'edition' | 'version'>> {
+  const module = await import('@/data/deck.json');
+  const deck = module.default as DeckFile;
+  return { name: deck.name, edition: deck.edition, version: deck.version };
 }

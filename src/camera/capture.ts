@@ -74,12 +74,12 @@ function loadImage(src: string): Promise<HTMLImageElement> {
 }
 
 function drawFrameLabel(ctx: CanvasRenderingContext2D, title: string): void {
-  const fontSize = Math.round((11 / 400) * OUTPUT_HEIGHT * 1.15);
-  const y = (385 / 400) * OUTPUT_HEIGHT;
-  const maxWidth = OUTPUT_WIDTH * 0.88;
+  const fontSize = Math.round((14 / 400) * OUTPUT_HEIGHT);
+  const y = (376 / 400) * OUTPUT_HEIGHT;
+  const maxWidth = OUTPUT_WIDTH * 0.86;
+  const x = OUTPUT_WIDTH / 2;
 
-  ctx.font = `600 ${fontSize}px Georgia, 'Times New Roman', serif`;
-  ctx.fillStyle = 'rgba(245, 230, 216, 0.92)';
+  ctx.font = `600 ${fontSize}px system-ui, -apple-system, 'Segoe UI', sans-serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
@@ -91,7 +91,12 @@ function drawFrameLabel(ctx: CanvasRenderingContext2D, title: string): void {
     text = `${text}…`;
   }
 
-  ctx.fillText(text, OUTPUT_WIDTH / 2, y);
+  ctx.lineJoin = 'round';
+  ctx.lineWidth = Math.max(3, fontSize * 0.12);
+  ctx.strokeStyle = 'rgba(35, 49, 75, 0.9)';
+  ctx.strokeText(text, x, y);
+  ctx.fillStyle = '#F4ECDD';
+  ctx.fillText(text, x, y);
 }
 
 function drawCardComposite(
